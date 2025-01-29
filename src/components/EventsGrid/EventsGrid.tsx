@@ -67,9 +67,9 @@ export default function EventsGrid(props: EventsGridProps) {
                 )}
                 <div className="absolute h-full w-full inset-0 bg-black transition-all duration-500 opacity-0 group-hover:opacity-40" />
                 <div className="absolute inset-0 flex items-center justify-center p-4">
-                  <h2 className="text-white text-xl md:text-2xl font-bold text-center uppercase bg-black/90 px-1">
+                  <h3 className="text-white text-xl md:text-2xl font-bold text-center uppercase bg-black/90 px-1">
                     {event.title}
-                  </h2>
+                  </h3>
                 </div>
               </div>
             );

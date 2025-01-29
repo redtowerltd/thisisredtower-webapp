@@ -16,11 +16,23 @@ export interface Home {
   clientTaglineBackgroundImage: any;
 }
 
+export interface About {
+  id: number;
+  seoTitle: string;
+  seoDescription: string;
+  seoTags: string;
+}
+
 export interface Navigation {
   id: number;
   title: string;
   href: string;
   externalLink: boolean;
+}
+
+export interface Footer {
+  id: number;
+  copyright: string;
 }
 
 export interface HeroBanner {
@@ -52,7 +64,9 @@ export interface Clients {
 
 interface Schema {
   Home: Home;
+  About: About;
   Navigation: Navigation[];
+  Footer: Footer[];
   Hero_Banner: HeroBanner[];
   Events: Events[];
   Clients: Clients[];

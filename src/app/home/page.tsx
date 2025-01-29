@@ -1,19 +1,20 @@
 import { Fragment } from "react";
 
-import {
-  fetchHomeData,
-  getAllClients,
-  getAllEvents,
-  getAllHeroBanner,
-  getNavigation,
-} from "../actions";
-
+import { BACKEND_URL } from "@/lib/globals";
 import ParallaxCta from "@/components/ParallaxCta/ParallaxCta";
 import HeroBanner from "@/components/HeroBanner/HeroBanner";
 import Navigation from "@/components/Navigation/Navigation";
 import EventsGrid from "@/components/EventsGrid/EventsGrid";
-import { BACKEND_URL } from "@/lib/globals";
 import ClientGrid from "@/components/ClientGrid/ClientGrid";
+import Footer from "@/components/Footer/Footer";
+import { fetchHomeData } from "./actions";
+import {
+  getAllClients,
+  getAllEvents,
+  getAllHeroBanner,
+  getFooter,
+  getNavigation,
+} from "../actions";
 
 export async function generateMetadata() {
   const home = await fetchHomeData();
@@ -32,6 +33,7 @@ export async function generateMetadata() {
 export default async function Home() {
   const homeProps = await fetchHomeData();
   const navigationProps = await getNavigation();
+  const footerProps = await getFooter();
   const heroBannerProps = await getAllHeroBanner();
   const eventsProps = await getAllEvents();
   const clientProps = await getAllClients();
@@ -67,9 +69,7 @@ export default async function Home() {
             <div className="text-4xl text-center p-8">No Clients</div>
           )}
         </main>
-        <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-          Footer here
-        </footer>
+        <Footer navData={navigationProps} footerData={footerProps} />
       </div>
     </Fragment>
   );

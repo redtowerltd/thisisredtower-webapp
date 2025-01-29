@@ -1,10 +1,14 @@
 import { ApiEndpoints } from "@/config/app";
 import { client } from "@/lib/directus";
-import { readAssetRaw, readItems, readSingleton } from "@directus/sdk";
+import { readAssetRaw, readItems } from "@directus/sdk";
 
-export async function fetchHomeData() {
+export async function getNavigation() {
   try {
-    const data = await client.request(readSingleton(ApiEndpoints.HOME));
+    const data = await client.request(
+      readItems(ApiEndpoints.NAVIGATION, {
+        fields: ["id", "title", "href", "externalLink"],
+      })
+    );
 
     return data;
   } catch (error: any) {
@@ -16,11 +20,11 @@ export async function fetchHomeData() {
   }
 }
 
-export async function getNavigation() {
+export async function getFooter() {
   try {
     const data = await client.request(
-      readItems(ApiEndpoints.NAVIGATION, {
-        fields: ["id", "title", "href", "externalLink"],
+      readItems(ApiEndpoints.FOOTER, {
+        fields: ["id", "copyright"],
       })
     );
 

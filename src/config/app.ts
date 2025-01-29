@@ -7,6 +7,7 @@ export enum Paths {
 
 export enum ApiEndpoints {
   HOME = "Home",
+  ABOUT = "About",
   NAVIGATION = "Navigation",
   HERO_BANNER = "Hero_Banner",
   EVENTS = "Events",

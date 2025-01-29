@@ -63,14 +63,14 @@ export default function ParallaxCta(props: ParallaxProps) {
       />
 
       <div className="relative z-10 flex h-full items-center justify-center">
-        <h1
+        <h2
           className={cn(
             "text-white text-4xl md:text-6xl font-bold text-center px-4 uppercase",
             josefinSans.className
           )}
         >
           {text}
-        </h1>
+        </h2>
       </div>
 
       {!hideLayer && (

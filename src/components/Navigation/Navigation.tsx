@@ -18,7 +18,12 @@ export default function Navigation(props: NavigationProps) {
   return (
     <header className="w-full h-14 bg-[#ce1211] flex items-center p-4 shadow sticky top-0">
       <Image src="/logo.jpg" alt="" width={20} height={30} />
-      <h1 className="font-bold text-xl uppercase text-white ms-4">
+      <h1
+        className={cn(
+          "!font-semibold text-xl uppercase text-white ms-4 mt-1",
+          josefinSans.className
+        )}
+      >
         This is Red Tower
       </h1>
 
