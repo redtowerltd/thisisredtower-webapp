@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { Josefin_Sans } from "next/font/google";
 import { cn } from "@/lib/utils";

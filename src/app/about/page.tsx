@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 
-import { BACKEND_URL } from "@/lib/globals";
+//import { BACKEND_URL } from "@/lib/globals";
 import Navigation from "@/components/Navigation/Navigation";
 import Footer from "@/components/Footer/Footer";
 import { fetchAboutData } from "./actions";
@@ -21,11 +21,11 @@ export async function generateMetadata() {
 }
 
 export default async function About() {
-  const aboutProps = await fetchAboutData();
+  //const aboutProps = await fetchAboutData();
   const navigationProps = await getNavigation();
   const footerProps = await getFooter();
 
-  const assetUrl = `${BACKEND_URL}/assets`;
+  //const assetUrl = `${BACKEND_URL}/assets`;
 
   return (
     <Fragment>
