@@ -5,11 +5,11 @@ import React, { useEffect, useRef } from "react";
 import { Josefin_Sans } from "next/font/google";
 import { cn } from "@/lib/utils";
 
-type ParallaxProps = {
-  backgroundImage: string; // URL for the background image
-  text: string; // Text to display in the foreground
+interface ParallaxProps {
+  backgroundImage: string;
+  text: string;
   hideLayer?: boolean;
-};
+}
 
 const josefinSans = Josefin_Sans({
   weight: "400",
@@ -65,7 +65,7 @@ export default function ParallaxCta(props: ParallaxProps) {
       <div className="relative z-10 flex h-full items-center justify-center">
         <h2
           className={cn(
-            "text-white text-4xl md:text-6xl font-bold text-center px-4 uppercase",
+            "text-white text-4xl md:text-6xl !font-semibold text-center px-4 uppercase",
             josefinSans.className
           )}
         >

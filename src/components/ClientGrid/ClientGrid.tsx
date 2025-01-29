@@ -57,8 +57,8 @@ export default function ClientGrid(props: ClientGridProps) {
                   />
                 )}
                 <div className="absolute h-full w-full inset-0 bg-black transition-all duration-500 opacity-0 group-hover:opacity-40" />
-                <div className="absolute inset-0 flex items-center justify-center p-4">
-                  <h3 className="text-white text-xl md:text-2xl font-bold text-center uppercase bg-black/90 px-1">
+                <div className="absolute inset-0 flex items-end justify-center p-4">
+                  <h3 className="text-white text-sm md:text-[18px] font-bold !p-1 text-center uppercase bg-black/80 px-1">
                     {event.title}
                   </h3>
                 </div>
