@@ -9,6 +9,7 @@ async function getEvent(slug: string) {
 
     return page;
   } catch (error) {
+    console.error(error);
     notFound();
   }
 }

@@ -9,6 +9,7 @@ async function getClients(slug: string) {
 
     return page;
   } catch (error) {
+    console.error(error);
     notFound();
   }
 }
