@@ -15,6 +15,7 @@ import {
   getFooter,
   getNavigation,
 } from "../actions";
+import ParallaxVideo from "@/components/ParallaxVideo/ParallaxVideo";
 
 export async function generateMetadata() {
   const home = await fetchHomeData();
@@ -68,6 +69,11 @@ export default async function Home() {
           ) : (
             <div className="text-4xl text-center p-8">No Clients</div>
           )}
+
+          <ParallaxVideo
+            backgroundImage={`${BACKEND_URL}/assets/${homeProps.clientTaglineBackgroundImage}`}
+            text={homeProps.clientTagline}
+          />
         </main>
         <Footer navData={navigationProps} footerData={footerProps} />
       </div>

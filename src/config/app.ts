@@ -12,6 +12,8 @@ export enum ApiEndpoints {
   HERO_BANNER = "Hero_Banner",
   EVENTS = "Events",
   CLIENTS = "Clients",
+  NEWS = "News",
+  ARTICLES = "Articles",
   FOOTER = "Footer",
 }
 

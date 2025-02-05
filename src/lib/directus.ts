@@ -30,6 +30,16 @@ export interface Navigation {
   externalLink: boolean;
 }
 
+export interface News {
+  id: number;
+  seoTitle: string;
+  seoDescription: string;
+  seoTags: string;
+  title: string;
+  description: string;
+  heroImage: string;
+}
+
 export interface Footer {
   id: number;
   copyright: string;
@@ -62,14 +72,28 @@ export interface Clients {
   date_created: string;
 }
 
+export interface Articles {
+  id: number;
+  status: string;
+  slug: string;
+  articleTitle: string;
+  articleImage: any;
+  blurb: string;
+  content: string;
+  user_created: string;
+  date_created: string;
+}
+
 interface Schema {
   Home: Home;
   About: About;
   Navigation: Navigation[];
   Footer: Footer[];
+  Articles: Articles[];
   Hero_Banner: HeroBanner[];
   Events: Events[];
   Clients: Clients[];
+  News: News;
 }
 
 export const client = createDirectus<Schema>(String(BACKEND_URL)).with(rest());

@@ -1,0 +1,88 @@
+import { Fragment } from "react";
+import Link from "next/link";
+
+import Navigation from "@/components/Navigation/Navigation";
+import Footer from "@/components/Footer/Footer";
+import { BACKEND_URL } from "@/lib/globals";
+
+import { fetchNewsData, fetchUsers, getAllArticles } from "./actions";
+import { getFooter, getNavigation } from "../actions";
+import ParallaxCta from "@/components/ParallaxCta/ParallaxCta";
+
+export async function generateMetadata() {
+  const news = await fetchNewsData();
+
+  return {
+    title: news.seoTitle,
+    description: news.seoDescription,
+    keywords: news.seoTags,
+    openGraph: {
+      title: news.seoTitle,
+      description: news.seoDescription,
+    },
+  };
+}
+
+export default async function NewsListPage() {
+  const newsProps = await fetchNewsData();
+  const articles = await getAllArticles();
+  const navigationProps = await getNavigation();
+  const footerProps = await getFooter();
+
+  const userIds =
+    (articles && articles.map((article) => article.user_created)) || [];
+  const users = await fetchUsers(userIds);
+
+  const assetUrl = `${BACKEND_URL}/assets`;
+
+  return (
+    <Fragment>
+      <Navigation data={navigationProps} />
+      <ParallaxCta
+        backgroundImage={`${BACKEND_URL}/assets/${newsProps.heroImage}`}
+        text={newsProps.title}
+      />
+      <section>{newsProps && <p>{newsProps.description}</p>}</section>
+      <section className="bg-white">
+        <div className="container px-5 py-24 mx-auto max-w-7xl">
+          <div className="flex flex-wrap -m-4">
+            {articles && articles.length > 0 ? (
+              articles.map((item, i) => {
+                const author = users[item.user_created];
+
+                return (
+                  <div key={i} className="xl:w-1/3 md:w-1/2 p-4">
+                    <div className="bg-[#ce1211] text-white p-6">
+                      <Link href={`/news/${item.slug}`}>
+                        <img
+                          className="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72 w-full object-cover object-center mb-6"
+                          src={`${assetUrl}/${item.articleImage}`}
+                          alt={item.articleTitle}
+                        />
+                        <h2 className="text-2xl text-white font-semibold title-font mb-4 uppercase">
+                          {item.articleTitle}
+                        </h2>
+                        <p className="text-sm italic mb-2">
+                          By {author?.first_name ?? "Unknown"}{" "}
+                          {author?.last_name ?? ""}
+                        </p>
+                        <p className="leading-relaxed text-base">
+                          {item.blurb}
+                        </p>
+                      </Link>
+                    </div>
+                  </div>
+                );
+              })
+            ) : (
+              <div className="text-4xl text-white text-center p-8">
+                No Articles
+              </div>
+            )}
+          </div>
+        </div>
+      </section>
+      <Footer navData={navigationProps} footerData={footerProps} />
+    </Fragment>
+  );
+}
