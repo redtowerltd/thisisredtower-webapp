@@ -17,7 +17,7 @@ const josefinSans = Josefin_Sans({
 });
 
 export default function ParallaxVideo(props: ParallaxVideoProps) {
-  const { backgroundImage, text, hideLayer = false } = props;
+  const { backgroundImage, hideLayer = false } = props;
   const containerRef = useRef<HTMLDivElement>(null);
   const backgroundRef = useRef<HTMLDivElement>(null);
 

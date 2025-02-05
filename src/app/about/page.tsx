@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 
-import { BACKEND_URL } from "@/lib/globals";
+//import { BACKEND_URL } from "@/lib/globals";
 import Navigation from "@/components/Navigation/Navigation";
 import Footer from "@/components/Footer/Footer";
 import { fetchAboutData } from "./actions";
