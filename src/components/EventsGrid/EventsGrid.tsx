@@ -3,14 +3,6 @@
 import Image from "next/image";
 import { useState } from "react";
 import { Button } from "../ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-} from "@/components/ui/dialog";
-import { Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 
@@ -24,18 +16,7 @@ export default function EventsGrid(props: EventsGridProps) {
 
   const [allEvents, setAllEvents] = useState(9);
   const [open, setOpen] = useState(false);
-  const [selectedEvent, setSelectedEvent] = useState<any>(null);
   const [loading, setLoading] = useState(false);
-
-  const handleOpenDialog = (event: any) => {
-    setSelectedEvent(event);
-    setOpen(true);
-    setLoading(true);
-  };
-
-  const handleImageLoad = () => {
-    setLoading(false);
-  };
 
   return (
     <div className="py-8">
@@ -99,39 +80,6 @@ export default function EventsGrid(props: EventsGridProps) {
           </div>
         )}
       </div>
-
-      {/* Dialog for Event Details */}
-      <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="w-[100%] max-w-screen-lg !rounded-none">
-          <DialogHeader>
-            <DialogTitle className="text-2xl uppercase">
-              {selectedEvent?.title}
-            </DialogTitle>
-            <DialogDescription>{selectedEvent?.description}</DialogDescription>
-          </DialogHeader>
-
-          <div className="relative mt-4 flex justify-center items-center">
-            {loading && (
-              <div className="absolute z-10 flex items-center justify-center">
-                <Loader2 className="h-10 w-10 animate-spin text-gray-500" />
-              </div>
-            )}
-            {selectedEvent?.thumbnail && (
-              <Image
-                className={cn("rounded-md transition-opacity w-full", {
-                  "opacity-0": loading,
-                  "opacity-100": !loading,
-                })}
-                src={`${assetUrl}${selectedEvent.thumbnail}`}
-                alt={selectedEvent.title}
-                width={800}
-                height={400}
-                onLoad={handleImageLoad}
-              />
-            )}
-          </div>
-        </DialogContent>
-      </Dialog>
     </div>
   );
 }

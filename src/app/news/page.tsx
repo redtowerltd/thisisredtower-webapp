@@ -1,5 +1,6 @@
 import { Fragment } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 import Navigation from "@/components/Navigation/Navigation";
 import Footer from "@/components/Footer/Footer";
@@ -55,9 +56,11 @@ export default async function NewsListPage() {
                     <div key={i} className="xl:w-1/3 md:w-1/2 p-4">
                       <div className="text-black bg-white p-6">
                         <Link href={`/news/${item.slug}`}>
-                          <img
+                          <Image
                             className="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72 w-full object-cover object-center mb-6 hover:scale-120"
                             src={`${assetUrl}/${item.articleImage}`}
+                            width={500}
+                            height={500}
                             alt={item.articleTitle}
                           />
                           <h2 className="text-2xl font-semibold title-font mb-4 uppercase">

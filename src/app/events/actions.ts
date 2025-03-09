@@ -1,6 +1,6 @@
 import { ApiEndpoints } from "@/config/app";
 import { client } from "@/lib/directus";
-import { readItem, readItems } from "@directus/sdk";
+import { readItems } from "@directus/sdk";
 import { notFound } from "next/navigation";
 
 export async function getEvents() {

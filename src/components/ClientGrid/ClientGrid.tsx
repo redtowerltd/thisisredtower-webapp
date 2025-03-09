@@ -10,7 +10,6 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
-import { Loader2 } from "lucide-react"; // Shadcn-compatible spinner icon
 import { cn } from "@/lib/utils";
 
 interface ClientGridProps {

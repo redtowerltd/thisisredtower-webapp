@@ -54,9 +54,8 @@ export default async function About() {
           {staffProps &&
             staffProps.map((item, i) => {
               return (
-                <Fragment>
+                <Fragment key={i}>
                   <ParallaxStaff
-                    key={i}
                     backgroundImage={`${BACKEND_URL}/assets/${item.photo}`}
                     text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
                   />
