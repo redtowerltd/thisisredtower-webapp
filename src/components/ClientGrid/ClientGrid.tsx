@@ -10,7 +10,6 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
-import { cn } from "@/lib/utils";
 
 interface ClientGridProps {
   data: any;
@@ -83,27 +82,24 @@ export default function ClientGrid(props: ClientGridProps) {
         )}
       </div>
 
-      {/* Dialog for Event Details */}
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="w-[100%] max-w-screen-lg !rounded-none">
-          <DialogHeader>
+        <DialogContent className="w-full max-w-screen-lg max-h-[600px] !rounded-none flex flex-col items-center justify-center">
+          <DialogHeader className="text-center">
             <DialogTitle className="text-2xl uppercase">
               {selectedClient?.title}
             </DialogTitle>
             <DialogDescription>{selectedClient?.description}</DialogDescription>
           </DialogHeader>
 
-          <div className="relative mt-4 flex justify-center items-center">
+          {/* Image Wrapper */}
+          <div className="relative w-full flex justify-center items-center h-[400px]">
             {selectedClient?.thumbnail && (
               <Image
-                className={cn(
-                  "transition-opacity max-h-[500px] max-w-[500px]",
-                  {}
-                )}
+                className="w-auto h-full max-h-full object-contain"
                 src={`${assetUrl}/${selectedClient.thumbnail}`}
                 alt={selectedClient.title}
                 width={800}
-                height={400}
+                height={600}
               />
             )}
           </div>
