@@ -1,6 +1,6 @@
 import { ApiEndpoints } from "@/config/app";
 import { client } from "@/lib/directus";
-import { readSingleton } from "@directus/sdk";
+import { readItems, readSingleton } from "@directus/sdk";
 
 export async function fetchAboutData() {
   try {
@@ -13,5 +13,19 @@ export async function fetchAboutData() {
       error.response?.data || error.message
     );
     throw error;
+  }
+}
+
+export async function fetchStaffData() {
+  try {
+    const page = await client.request(
+      readItems(ApiEndpoints.STAFF, {
+        fields: ["name", "job", "bio", "photo"],
+      })
+    );
+
+    return page;
+  } catch (error) {
+    console.error(error);
   }
 }

@@ -24,16 +24,10 @@ export default function ClientGrid(props: ClientGridProps) {
   const [allClients, setAllClients] = useState(9);
   const [open, setOpen] = useState(false);
   const [selectedClient, setSelectedClient] = useState<any>(null);
-  const [loading, setLoading] = useState(false);
 
   const handleOpenDialog = (event: any) => {
     setSelectedClient(event);
     setOpen(true);
-    setLoading(true);
-  };
-
-  const handleImageLoad = () => {
-    setLoading(false);
   };
 
   return (
@@ -101,22 +95,16 @@ export default function ClientGrid(props: ClientGridProps) {
           </DialogHeader>
 
           <div className="relative mt-4 flex justify-center items-center">
-            {loading && (
-              <div className="absolute z-10 flex items-center justify-center">
-                <Loader2 className="h-10 w-10 animate-spin text-gray-500" />
-              </div>
-            )}
             {selectedClient?.thumbnail && (
               <Image
-                className={cn("rounded-md transition-opacity w-full", {
-                  "opacity-0": loading,
-                  "opacity-100": !loading,
-                })}
-                src={`${assetUrl}${selectedClient.thumbnail}`}
+                className={cn(
+                  "transition-opacity max-h-[500px] max-w-[500px]",
+                  {}
+                )}
+                src={`${assetUrl}/${selectedClient.thumbnail}`}
                 alt={selectedClient.title}
                 width={800}
                 height={400}
-                onLoad={handleImageLoad}
               />
             )}
           </div>

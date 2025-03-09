@@ -5,10 +5,10 @@ import React, { useEffect, useRef } from "react";
 import { Josefin_Sans } from "next/font/google";
 import { cn } from "@/lib/utils";
 
-interface ParallaxProps {
+interface ParallaxStaffProps {
   backgroundImage: string;
   text: string;
-  hideLayer?: boolean;
+  side?: "left" | "right";
 }
 
 const josefinSans = Josefin_Sans({
@@ -16,8 +16,8 @@ const josefinSans = Josefin_Sans({
   subsets: ["latin"],
 });
 
-export default function ParallaxCta(props: ParallaxProps) {
-  const { backgroundImage, text, hideLayer = false } = props;
+export default function ParallaxStaff(props: ParallaxStaffProps) {
+  const { backgroundImage, text, side = "left" } = props;
   const containerRef = useRef<HTMLDivElement>(null);
   const backgroundRef = useRef<HTMLDivElement>(null);
 
@@ -39,7 +39,7 @@ export default function ParallaxCta(props: ParallaxProps) {
 
         // Adjust the background position based on the progress
         backgroundRef.current.style.transform = `translateY(${
-          progress * -300
+          progress * -100
         }px)`;
       }
     };
@@ -53,7 +53,7 @@ export default function ParallaxCta(props: ParallaxProps) {
   }, []);
 
   return (
-    <section ref={containerRef} className="relative h-[400px] overflow-hidden">
+    <section ref={containerRef} className="relative h-[500px] overflow-hidden">
       <div
         ref={backgroundRef}
         className="absolute top-0 left-0 w-full h-screen bg-cover bg-center scale-125"
@@ -62,19 +62,25 @@ export default function ParallaxCta(props: ParallaxProps) {
         }}
       />
 
-      <div className="relative z-10 flex h-full items-center justify-center">
-        <h2
+      {text && (
+        <div
           className={cn(
-            "text-white text-4xl md:text-6xl !font-semibold text-center px-4 uppercase",
-            josefinSans.className
+            "relative z-10 flex h-full items-center mx-auto max-w-[500px]",
+            {
+              "md:justify-start md:ms-10": side === "left",
+              "md:justify-end md:me-10": side === "right",
+            }
           )}
         >
-          {text}
-        </h2>
-      </div>
-
-      {!hideLayer && (
-        <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-40" />
+          <h2
+            className={cn(
+              "text-white text-4xl !font-semibold text-center uppercase bg-black bg-opacity-40 p-4",
+              josefinSans.className
+            )}
+          >
+            {text}
+          </h2>
+        </div>
       )}
     </section>
   );

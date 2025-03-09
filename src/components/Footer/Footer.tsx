@@ -15,7 +15,7 @@ interface FooterProps {
 
 export default function Footer(props: FooterProps) {
   const { navData, footerData } = props;
-  //  <Image src="/logo.jpg" alt="" width={20} height={30} />
+
   return (
     <footer className="w-full bg-[#ce1211] flex flex-col justify-center px-12 py-[8rem]">
       <div className="flex align-center justify-center text-normal text-white mb-10 gap-6">

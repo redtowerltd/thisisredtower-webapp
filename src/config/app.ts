@@ -8,9 +8,11 @@ export enum Paths {
 export enum ApiEndpoints {
   HOME = "Home",
   ABOUT = "About",
+  STAFF = "Staff_Profiles",
   NAVIGATION = "Navigation",
   HERO_BANNER = "Hero_Banner",
   EVENTS = "Events",
+  EVENT_FILES = "Events_files_1",
   CLIENTS = "Clients",
   NEWS = "News",
   ARTICLES = "Articles",

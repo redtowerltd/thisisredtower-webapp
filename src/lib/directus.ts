@@ -21,6 +21,18 @@ export interface About {
   seoTitle: string;
   seoDescription: string;
   seoTags: string;
+  heroImage: string;
+  title: string;
+  description: string;
+}
+
+export interface Staff {
+  id: number;
+  status: string;
+  name: string;
+  job: string;
+  bio: string;
+  photo: any;
 }
 
 export interface Navigation {
@@ -58,6 +70,7 @@ export interface Events {
   title: string;
   description: string;
   thumbnail: any;
+  gallery: any[];
   thumbnailUrl: string;
   date_created: string;
 }
@@ -87,11 +100,13 @@ export interface Articles {
 interface Schema {
   Home: Home;
   About: About;
+  Staff_Profiles: Staff[];
   Navigation: Navigation[];
   Footer: Footer[];
   Articles: Articles[];
   Hero_Banner: HeroBanner[];
   Events: Events[];
+  Events_files_1: any[];
   Clients: Clients[];
   News: News;
 }

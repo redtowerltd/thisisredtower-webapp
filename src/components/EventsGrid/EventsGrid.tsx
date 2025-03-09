@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/dialog";
 import { Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 interface EventsGridProps {
   data: any;
@@ -42,13 +43,13 @@ export default function EventsGrid(props: EventsGridProps) {
         {data &&
           data.slice(0, allEvents).map((event: any, i: number) => {
             return (
-              <div
+              <Link
                 key={i}
                 className={cn("relative group overflow-hidden cursor-pointer", {
                   "col-span-12 md:col-span-4": i < 3,
                   "col-span-6 md:col-span-2": i >= 3,
                 })}
-                onClick={() => handleOpenDialog(event)}
+                href={`/events#${event.slug}`}
               >
                 {event.thumbnail && (
                   <Image
@@ -71,7 +72,7 @@ export default function EventsGrid(props: EventsGridProps) {
                     {event.title}
                   </h3>
                 </div>
-              </div>
+              </Link>
             );
           })}
         {data.length > 9 && (

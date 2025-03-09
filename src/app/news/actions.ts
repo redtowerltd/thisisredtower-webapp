@@ -16,7 +16,7 @@ export async function fetchNewsData() {
   }
 }
 
-export async function getAllArticles() {
+export async function fetchAllArticles() {
   try {
     const page = await client.request(
       readItems(ApiEndpoints.ARTICLES, {

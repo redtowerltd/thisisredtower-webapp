@@ -1,5 +1,3 @@
-import { Fragment } from "react";
-
 import { BACKEND_URL } from "@/lib/globals";
 import ParallaxCta from "@/components/ParallaxCta/ParallaxCta";
 import HeroBanner from "@/components/HeroBanner/HeroBanner";
@@ -42,41 +40,39 @@ export default async function Home() {
   const assetUrl = `${BACKEND_URL}/assets`;
 
   return (
-    <Fragment>
-      <div className="min-h-screen font-[family-name:var(--font-geist-sans)] overflow-auto relative">
-        <Navigation data={navigationProps} />
-        <main>
-          <HeroBanner data={heroBannerProps} assetUrl={assetUrl} />
+    <div className="min-h-screen font-[family-name:var(--font-geist-sans)] overflow-auto relative">
+      <Navigation data={navigationProps} />
+      <main>
+        <HeroBanner data={heroBannerProps} assetUrl={assetUrl} />
 
-          {/* EVENTS GRID */}
-          <ParallaxCta
-            backgroundImage={`${BACKEND_URL}/assets/${homeProps.eventTaglineBackgroundImage}`}
-            text={homeProps.eventTagline}
-          />
-          {eventsProps && eventsProps.length > 0 ? (
-            <EventsGrid data={eventsProps} assetUrl={assetUrl} />
-          ) : (
-            <div className="text-4xl text-center p-8">No Events</div>
-          )}
+        {/* EVENTS GRID */}
+        <ParallaxCta
+          backgroundImage={`${BACKEND_URL}/assets/${homeProps.eventTaglineBackgroundImage}`}
+          text={homeProps.eventTagline}
+        />
+        {eventsProps && eventsProps.length > 0 ? (
+          <EventsGrid data={eventsProps} assetUrl={assetUrl} />
+        ) : (
+          <div className="text-4xl text-center p-8">No Events</div>
+        )}
 
-          {/* CLIENTS GRID */}
-          <ParallaxCta
-            backgroundImage={`${BACKEND_URL}/assets/${homeProps.clientTaglineBackgroundImage}`}
-            text={homeProps.clientTagline}
-          />
-          {clientProps && clientProps.length > 0 ? (
-            <ClientGrid data={clientProps} assetUrl={assetUrl} />
-          ) : (
-            <div className="text-4xl text-center p-8">No Clients</div>
-          )}
+        {/* CLIENTS GRID */}
+        <ParallaxCta
+          backgroundImage={`${BACKEND_URL}/assets/${homeProps.clientTaglineBackgroundImage}`}
+          text={homeProps.clientTagline}
+        />
+        {clientProps && clientProps.length > 0 ? (
+          <ClientGrid data={clientProps} assetUrl={assetUrl} />
+        ) : (
+          <div className="text-4xl text-center p-8">No Clients</div>
+        )}
 
-          <ParallaxVideo
-            backgroundImage={`${BACKEND_URL}/assets/${homeProps.clientTaglineBackgroundImage}`}
-            text={homeProps.clientTagline}
-          />
-        </main>
-        <Footer navData={navigationProps} footerData={footerProps} />
-      </div>
-    </Fragment>
+        <ParallaxVideo
+          backgroundImage={`${BACKEND_URL}/assets/${homeProps.clientTaglineBackgroundImage}`}
+          text={homeProps.clientTagline}
+        />
+      </main>
+      <Footer navData={navigationProps} footerData={footerProps} />
+    </div>
   );
 }
