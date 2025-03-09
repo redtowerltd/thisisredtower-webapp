@@ -15,8 +15,6 @@ export default function EventsGrid(props: EventsGridProps) {
   const { data, assetUrl } = props;
 
   const [allEvents, setAllEvents] = useState(9);
-  const [open, setOpen] = useState(false);
-  const [loading, setLoading] = useState(false);
 
   return (
     <div className="py-8">
