@@ -54,7 +54,7 @@ export default async function About() {
           {staffProps &&
             staffProps.map((item, i) => {
               return (
-                <Fragment key={i}>
+                <div className="hidden md:block" key={i}>
                   <ParallaxStaff
                     backgroundImage={`${BACKEND_URL}/assets/${item.photo}`}
                     text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
@@ -66,7 +66,7 @@ export default async function About() {
                       <p>{item.bio}</p>
                     </div>
                   </section>
-                </Fragment>
+                </div>
               );
             })[0]}
 
@@ -76,16 +76,11 @@ export default async function About() {
             side="right"
           />
 
-          <section className="py-20 grid gap-14 container mx-auto">
-            {staffProps &&
-              staffProps.slice(1).map((item, i) => (
-                <div
-                  key={i}
-                  className={`flex items-center gap-8 text-white ${
-                    i % 2 === 0 ? "" : "flex-row-reverse"
-                  }`}
-                >
-                  <div className="w-2/6">
+          {staffProps &&
+            staffProps.map((item, i) => {
+              return (
+                <div className="block md:hidden text-white" key={i}>
+                  <div className="w-100 md:w-2/6">
                     <Image
                       className="object-cover aspect-square"
                       src={`${BACKEND_URL}/assets/${item.photo}`}
@@ -94,7 +89,34 @@ export default async function About() {
                       height={800}
                     />
                   </div>
-                  <div className="w-4/6 text-lg">
+                  <div className="w-100 md:w-4/6 text-lg p-4">
+                    <h3 className="uppercase text-5xl mb-6">{item.name}</h3>
+                    {item.job && <span>{item.job}</span>}
+                    <p>{item.bio}</p>
+                  </div>
+                </div>
+              );
+            })[0]}
+
+          <section className="py-20 grid gap-14 container mx-auto">
+            {staffProps &&
+              staffProps.slice(1).map((item, i) => (
+                <div
+                  key={i}
+                  className={`md:flex items-center gap-8 text-white ${
+                    i % 2 === 0 ? "" : "flex-row-reverse"
+                  }`}
+                >
+                  <div className="w-100 md:w-2/6">
+                    <Image
+                      className="object-cover aspect-square"
+                      src={`${BACKEND_URL}/assets/${item.photo}`}
+                      alt={`Profile photo of staff member ${item.name}`}
+                      width={800}
+                      height={800}
+                    />
+                  </div>
+                  <div className="w-100 md:w-4/6 text-lg p-4">
                     <h3 className="uppercase text-5xl mb-6">{item.name}</h3>
                     {item.job && <span>{item.job}</span>}
                     <p>{item.bio}</p>
