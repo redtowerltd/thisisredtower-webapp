@@ -29,61 +29,68 @@ export default function ClientGrid(props: ClientGridProps) {
   };
 
   return (
-    <div className="py-8">
-      <div className="grid grid-cols-12 gap-6">
-        {data &&
-          data.slice(0, allClients).map((event: any, i: number) => {
-            return (
-              <div
-                key={i}
-                className="relative group overflow-hidden cursor-pointer col-span-6 md:col-span-2"
-                onClick={() => handleOpenDialog(event)}
-              >
-                {event.thumbnail && (
-                  <Image
-                    className="h-full w-full object-cover transition-all duration-500 group-hover:scale-105 aspect-square"
-                    src={`${assetUrl}/${event.thumbnail}`}
-                    alt={event.title}
-                    width={500}
-                    height={200}
-                  />
-                )}
-                <div className="absolute h-full w-full inset-0 bg-black transition-all duration-500 opacity-0 group-hover:opacity-40" />
-                <div className="absolute inset-0 flex items-end justify-center p-4">
-                  <h3 className="text-white text-sm md:text-[18px] font-bold !p-1 text-center uppercase bg-black/80 px-1">
-                    {event.title}
-                  </h3>
+    <>
+      <div className="py-8">
+        <div className="grid grid-cols-12 gap-6">
+          {data &&
+            data.slice(0, allClients).map((event: any, i: number) => {
+              return (
+                <div
+                  key={i}
+                  className="relative group overflow-hidden cursor-pointer col-span-6 md:col-span-2"
+                  onClick={() => handleOpenDialog(event)}
+                >
+                  {event.thumbnail && (
+                    <Image
+                      className="h-full w-full object-cover transition-all duration-500 group-hover:scale-105 aspect-square"
+                      src={`${assetUrl}/${event.thumbnail}`}
+                      alt={event.title}
+                      width={500}
+                      height={200}
+                    />
+                  )}
+                  <div className="absolute h-full w-full inset-0 bg-black transition-all duration-500 opacity-0 group-hover:opacity-40" />
+                  <div className="absolute inset-0 flex items-end justify-center p-4">
+                    <h3 className="text-white text-sm md:text-[18px] font-bold !p-1 text-center uppercase bg-black/80 px-1">
+                      {event.title}
+                    </h3>
+                  </div>
                 </div>
-              </div>
-            );
-          })}
-        {data.length > 12 && (
-          <div className="col-span-12 flex align-center justify-center md:col-span-12">
-            {allClients === 12 ? (
-              <Button
-                variant="outline"
-                className="uppercase"
-                size="xxl"
-                onClick={() => setAllClients(data.length)}
-              >
-                Show All
-              </Button>
-            ) : (
-              <Button
-                variant="outline"
-                className="uppercase"
-                size="xxl"
-                onClick={() => setAllClients(12)}
-              >
-                Show Less
-              </Button>
-            )}
-          </div>
-        )}
+              );
+            })}
+          {data.length > 12 && (
+            <div className="col-span-12 flex align-center justify-center md:col-span-12">
+              {allClients === 12 ? (
+                <Button
+                  variant="outline"
+                  className="uppercase"
+                  size="xxl"
+                  onClick={() => setAllClients(data.length)}
+                >
+                  Show All
+                </Button>
+              ) : (
+                <Button
+                  variant="outline"
+                  className="uppercase"
+                  size="xxl"
+                  onClick={() => setAllClients(12)}
+                >
+                  Show Less
+                </Button>
+              )}
+            </div>
+          )}
+        </div>
       </div>
-
-      <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="w-full max-w-screen-lg max-h-[600px] !rounded-none flex flex-col items-center justify-center">
+      <Dialog
+        open={open}
+        onOpenChange={(val) => {
+          setOpen(val);
+          if (!val) setSelectedClient(null);
+        }}
+      >
+        <DialogContent className="w-full max-w-screen-lg !rounded-none">
           <DialogHeader className="text-center">
             <DialogTitle className="text-2xl uppercase">
               {selectedClient?.title}
@@ -105,6 +112,6 @@ export default function ClientGrid(props: ClientGridProps) {
           </div>
         </DialogContent>
       </Dialog>
-    </div>
+    </>
   );
 }
