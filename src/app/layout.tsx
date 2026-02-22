@@ -28,14 +28,14 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div className="bg-orb" />
+        <div className="bg-orb z-0" />
         <div className="relative stripe-texture">
           <div
             className="absolute inset-0 pointer-events-none"
             style={{ background: "var(--gradient-section)" }}
           />
         </div>
-        {children}
+        <div className="relative z-10">{children}</div>
       </body>
     </html>
   );
