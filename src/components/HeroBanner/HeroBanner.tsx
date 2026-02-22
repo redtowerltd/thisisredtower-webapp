@@ -26,7 +26,7 @@ export default function HeroBanner(props: HeroBannerProps) {
   }, [current, goTo]);
 
   return (
-    <section className="relative h-screen overflow-hidden">
+    <section className="relative h-[calc(100vh-50px)] overflow-hidden">
       {data.map((s: any, i: number) => (
         <div
           key={i}
@@ -78,14 +78,16 @@ export default function HeroBanner(props: HeroBannerProps) {
 
       {/* Content */}
       <div className="absolute inset-0 z-20 flex flex-col justify-end pb-24 px-8 md:px-16">
-        <div key={key}>
-          <h1
-            className="fade-up fade-up-delay-2 text-4xl md:text-7xl font-black text-white uppercase tracking-tight leading-none max-w-3xl mb-6 md:ms-8"
-            style={{ textShadow: "0 2px 40px hsl(0 0% 0% / 1)" }}
-          >
-            {data[current].altText}
-          </h1>
-        </div>
+        {!data.hideTitle && (
+          <div key={key}>
+            <h1
+              className="fade-up fade-up-delay-2 text-4xl md:text-7xl font-black text-white uppercase tracking-tight leading-none max-w-3xl mb-6 md:ms-8"
+              style={{ textShadow: "0 2px 40px hsl(0 0% 0% / 1)" }}
+            >
+              {data[current].title}
+            </h1>
+          </div>
+        )}
 
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-3">
           {data.map((_: any, i: number) => (

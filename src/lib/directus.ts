@@ -59,6 +59,8 @@ export interface Footer {
 
 export interface HeroBanner {
   id: number;
+  title: string;
+  hideTitle: boolean;
   altText: string;
   backgroundImage: any;
   date_created: string;

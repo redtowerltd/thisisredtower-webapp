@@ -26,8 +26,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased grain`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <div className="bg-orb" />
+        <div className="relative stripe-texture">
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{ background: "var(--gradient-section)" }}
+          />
+        </div>
         {children}
       </body>
     </html>

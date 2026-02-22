@@ -55,7 +55,7 @@ export default function ParallaxVideo(props: ParallaxVideoProps) {
   return (
     <div
       ref={containerRef}
-      className="relative h-[300px] sm:h-[500px] md:h-[800px] overflow-hidden"
+      className="relative h-[400px] sm:h-[500px] md:h-[800px] overflow-hidden"
     >
       <div
         ref={backgroundRef}

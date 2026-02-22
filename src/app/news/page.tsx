@@ -54,7 +54,7 @@ export default async function NewsListPage() {
 
                   return (
                     <div key={i} className="xl:w-1/3 md:w-1/2 p-4">
-                      <div className="text-black bg-white p-6">
+                      <div className="text-white bg-[#ce1211] p-6">
                         <Link href={`/news/${item.slug}`}>
                           <Image
                             className="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72 w-full object-cover object-center mb-6 hover:scale-120"

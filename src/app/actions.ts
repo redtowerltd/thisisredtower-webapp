@@ -42,7 +42,14 @@ export async function getAllHeroBanner() {
   try {
     const data = await client.request(
       readItems(ApiEndpoints.HERO_BANNER, {
-        fields: ["id", "altText", "backgroundImage", "date_created"],
+        fields: [
+          "id",
+          "title",
+          "hideTitle",
+          "altText",
+          "backgroundImage",
+          "date_created",
+        ],
       })
     );
 

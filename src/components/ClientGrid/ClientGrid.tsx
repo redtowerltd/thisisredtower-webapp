@@ -19,7 +19,7 @@ interface ClientGridProps {
 export default function ClientGrid(props: ClientGridProps) {
   const { data, assetUrl } = props;
 
-  const [allClients, setAllClients] = useState(9);
+  const [allClients, setAllClients] = useState(12);
   const [open, setOpen] = useState(false);
   const [selectedClient, setSelectedClient] = useState<any>(null);
 
@@ -73,7 +73,7 @@ export default function ClientGrid(props: ClientGridProps) {
                 variant="outline"
                 className="uppercase"
                 size="xxl"
-                onClick={() => setAllClients(9)}
+                onClick={() => setAllClients(12)}
               >
                 Show Less
               </Button>
